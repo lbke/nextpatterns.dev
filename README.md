@@ -1,3 +1,7 @@
+# For Next.js
+
+https://next.new/ loads the latest working Next.js version with StackBlitz
+
 # TutorialKit Starter
 
 👋 Welcome to TutorialKit!
