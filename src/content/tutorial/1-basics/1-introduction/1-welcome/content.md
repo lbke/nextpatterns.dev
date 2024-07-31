@@ -20,8 +20,8 @@ Take a few minutes to explore the user interface.
 
 You'll find the following:
 - A code editor with code samples demonstrating the problem we want to solve.
-- a button to check the solution.
-- a preview of a running Next application.
+- A button to check the solution.
+- A preview of a running Next application (it can take some time to load and start).
 
 The code is merged into a running Astro application, 
 and the result is what you see in the preview section.
