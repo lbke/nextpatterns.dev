@@ -11,19 +11,20 @@ import path from "path"
 export const dynamic = 'force-dynamic'
 
 export async function GET(request: Request) {
-    // Photo de Josh Sorenson: https://www.pexels.com/fr-fr/photo/moniteur-d-ordinateur-a-ecran-plat-noir-1714208/
-    // Hacky way to have an image file in a known folder
+    // Photo from Josh Sorenson: https://www.pexels.com/fr-fr/photo/moniteur-d-ordinateur-a-ecran-plat-noir-1714208/
+    // This is a hacky way to have an image file in a known folder,
+    // your real file should NOT be in the "public" folder
     const filePath = path.resolve("./public/image.jpg")
     console.log("Opening file", filePath)
     const stats = await fs.stat(filePath);
     const fileHandle = await fs.open(filePath)
-    const stream = fileHandle.readableWebStream()
+    const stream = fileHandle.readableWebStream(
+        { type: "bytes" }
+    )
     // @ts-ignore
     return new Response(stream, {
         status: 200,
         headers: new Headers({
-            // this optional header triggers a download in the browser
-            "content-disposition": `attachment; filename=${path.basename(filePath)}`,
             // we could get the mimetype automatically
             "content-type": "image/jpeg",
             "content-length": stats.size + "",
