@@ -1,6 +1,9 @@
 
 import fs from "fs/promises"
 import path from "path"
+// We can use NextRequest and NextResponse
+// they are just wrappers around JavaScript Request and Response
+// import { NextResponse, NextRequest } from "next/server"
 
 // Will not be needed anymore in Next 15
 // but in Next 14 this prevents the GET endpoint
@@ -25,9 +28,9 @@ export async function GET(request: Request) {
     console.log("Opening file", filePath)
     const stats = await fs.stat(filePath);
     const fileHandle = await fs.open(filePath)
-    // EXERCISE HERE: replace this line with a call to "fileHandle.readableWebStream(...)"
-    // be careful with the options
-    const stream = null
+    const stream = fileHandle.readableWebStream(
+        { type: "bytes" }
+    )
     // At the time of writing (07/2024) there is a tiny issue with typings
     // @ts-ignore see https://github.com/nodejs/node/issues/54041#issuecomment-2260420439
     return new Response(stream, {
