@@ -39,4 +39,6 @@ export async function GET(request: Request) {
         })
 
     })
+    // At the time of writing (07/2024), we have no way to close a file after the HTTP response is sent
+    // fileHandle.close()
 }
