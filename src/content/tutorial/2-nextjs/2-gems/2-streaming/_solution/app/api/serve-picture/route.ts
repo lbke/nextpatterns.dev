@@ -1,9 +1,6 @@
 
 import fs from "fs/promises"
 import path from "path"
-// We can use NextRequest and NextResponse
-// they are just wrappers around JavaScript Request and Response
-// import { NextResponse, NextRequest } from "next/server"
 
 // Will not be needed anymore in Next 15
 // but in Next 14 this prevents the GET endpoint

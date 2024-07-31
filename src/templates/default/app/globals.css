@@ -17,6 +17,8 @@
 }
 
 body {
+  @apply p-4;
+  min-height: 100vh;
   color: rgb(var(--foreground-rgb));
   background: linear-gradient(
       to bottom,

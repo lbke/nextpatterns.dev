@@ -1,6 +1,7 @@
 ---
 type: lesson
 title: Streaming files from route handlers
+focus: /app/api/serve-picture/route.ts
 ---
 
 # Streaming files from route handlers
