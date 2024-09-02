@@ -39,6 +39,8 @@ export async function GET(request: Request) {
         })
 
     })
-    // At the time of writing (07/2024), we have no way to close a file after the HTTP response is sent
-    // fileHandle.close()
+    // Next 15 introduces "next/after" to properly close the file
+    //  @see https://nextjs.org/blog/next-15-rc#executing-code-after-a-response-with-nextafter-experimental
+    // This Stackblitz demo currently uses v14 so this code do not work yet (09/2024)
+    // after(() => { fileHandle.close() })
 }

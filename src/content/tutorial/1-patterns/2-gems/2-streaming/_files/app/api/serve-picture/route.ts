@@ -25,7 +25,7 @@ export async function GET(request: Request) {
     console.log("Opening file", filePath)
     const stats = await fs.stat(filePath);
     const fileHandle = await fs.open(filePath)
-    // EXERCISE HERE: replace this line with a call to "fileHandle.readableWebStream(...)"
+    // 🔨 PRACTICE HERE: replace this line with a call to "fileHandle.readableWebStream(...)"
     // be careful with the options
     const stream = null
     // At the time of writing (07/2024) there is a tiny issue with typings
