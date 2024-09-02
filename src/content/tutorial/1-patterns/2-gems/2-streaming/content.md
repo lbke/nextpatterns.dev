@@ -18,7 +18,7 @@ But as the name implies, files in this folder are available to anyone.
 
 **How can we handle private or bigger files?**
 
-## Advanced file streaming scenarios with route handlers
+## Advanced file streaming use cases
 
 This pattern covers the following advanced use cases:
 
@@ -27,9 +27,11 @@ This pattern covers the following advanced use cases:
 - Generated files: The State of JavaScript survey backoffice app generates CSV exports of the current responses. This means that we generate the file on the fly when we receive an export request.
 
 We can't use the `/public` folder for that. We have to craft a more elaborate API endpoint to serve the files.
-In Next.js App Router, we call API endpoints "Route Handlers". Let's stream a file from a route handler.
+In Next.js App Router, we call API endpoints "Route Handlers". 
 
-## 🔨 Practice: stream files from a Route Handler
+**Let's stream a file from a route handler.**
+
+## 🔨 Practice: how to stream a file from a route handler
 
 Take a look at the codebase. It demonstrates a page displaying an image that should be streamed from a route handler.
 
