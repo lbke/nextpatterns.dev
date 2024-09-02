@@ -1,7 +1,8 @@
 ---
 type: lesson
-title: Welcome to NextPatterns
+title: Welcome
 focus: /counter.js
+slug: welcome
 ---
 
 # Welcome to NextPatterns

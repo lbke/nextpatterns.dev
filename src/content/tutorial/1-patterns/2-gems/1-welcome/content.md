@@ -1,6 +1,7 @@
 ---
 type: lesson
-title: About hidden gems
+title: Welcome
+slug: intro
 ---
 
 # Next.js hidden gems

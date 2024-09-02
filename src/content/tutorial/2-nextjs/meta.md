@@ -1,4 +1,0 @@
----
-type: part
-title: Next.js hidden gems
----

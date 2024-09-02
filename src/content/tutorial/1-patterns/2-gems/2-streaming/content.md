@@ -2,6 +2,7 @@
 type: lesson
 title: Streaming files from route handlers
 focus: /app/api/serve-picture/route.ts
+slug: route-handlers-file-streaming
 ---
 
 # Streaming files in Next.js App Router
