@@ -36,6 +36,9 @@ export async function GET(request: Request) {
             // we could get the mimetype automatically
             "content-type": "image/jpeg",
             "content-length": stats.size + "",
+            // this is just so the image is not cached during practice
+            // remove this header in production
+            "cache-control": "no-store"
         })
 
     })

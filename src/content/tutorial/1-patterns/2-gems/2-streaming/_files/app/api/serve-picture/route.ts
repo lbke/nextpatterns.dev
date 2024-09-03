@@ -25,17 +25,25 @@ export async function GET(request: Request) {
     console.log("Opening file", filePath)
     const stats = await fs.stat(filePath);
     const fileHandle = await fs.open(filePath)
-    // 🔨 PRACTICE HERE: replace this line with a call to "fileHandle.readableWebStream(...)"
-    // be careful with the options
-    const stream = null
+
+    //  ***
+    // 🔨 PRACTICE HERE: 
+    //    Replace this line with a call to "fileHandle.readableWebStream(...)"
+    //    and be careful with the options
+    //    (click the "solve" button above to skip the practice)
+    // ***
+    const stream = null // TODO
+
     // At the time of writing (07/2024) there is a tiny issue with typings
     // @ts-ignore see https://github.com/nodejs/node/issues/54041#issuecomment-2260420439
     return new Response(stream, {
         status: 200,
         headers: new Headers({
-            // we could get the mimetype automatically
             "content-type": "image/jpeg",
             "content-length": stats.size + "",
+            // this is just so the image is not cached during practice
+            // remove this header in production
+            "cache-control": "no-store"
         })
 
     })

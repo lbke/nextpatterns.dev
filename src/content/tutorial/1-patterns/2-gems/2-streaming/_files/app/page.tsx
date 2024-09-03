@@ -2,7 +2,8 @@ export default function FilePage() {
     return (
         <div>
             <h1>Streaming a private image</h1>
-            <p>This will not work yet, check the solution to see the picture.</p>
+            <p>The image will appear if you finish the exercise with the correct solution.</p>
+            <p>You can also click on the "solve" button to skip the exercise.</p>
             <img src="/api/serve-picture" />
         </div>
     )
