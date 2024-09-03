@@ -1,19 +1,13 @@
 /* https://tutorialkit.dev/reference/theming/ */
 /* Color Tokens Light */
+
+
 :root,
 :root[data-theme='light'] {
 
     --np-logo-dark-blue: #101a3f;
     --np-logo-cyan: #42cde6;
-
-    /* custom values */
-    .markdown-content {
-        h1 {
-            color: var(--np-logo-dark-blue);
-            padding-top: 4px;
-            padding-bottom: 4px;
-        }
-    }
+    --np-light-mint: #c0ecf2;
 
     /* tutorial kit values */
     --tk-background-primary: theme('colors.gray.0');
@@ -398,4 +392,24 @@
     --tk-elements-callouts-success-iconColor: var(--tk-elements-callouts-success-titleTextColor);
     --tk-elements-callouts-success-codeColor: var(--tk-text-primary);
     --tk-elements-callouts-success-codeBackgroundColor: var(--tk-background-secondary);
+}
+
+[data-theme='light'] {
+    .markdown-content {
+        h1 {
+            color: var(--np-logo-dark-blue);
+            padding-top: 4px;
+            padding-bottom: 4px;
+        }
+    }
+}
+
+[data-theme='dark'] {
+    .markdown-content {
+        h1 {
+            color: var(--np-light-mint);
+            padding-top: 4px;
+            padding-bottom: 4px;
+        }
+    }
 }
