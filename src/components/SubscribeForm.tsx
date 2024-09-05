@@ -1,12 +1,12 @@
 // TODO: merge with src/components/widgets/Abonnement.tsx
-import { actions } from "astro:actions";
+import { actions, isInputError } from "astro:actions";
 import { useState } from "react";
 
 
 export function SubscribeForm() {
     const [result, setResult] = useState<any | null>(null)
     const [errorState, setError] = useState<any | null>(null)
-    return <div className="my-4">
+    return <div className="py-8">
         <form
             method="POST"
             onSubmit={async (e) => {
@@ -16,17 +16,33 @@ export function SubscribeForm() {
                 const formData = new FormData(e.target as HTMLFormElement);
                 const { data, error } = await actions.subscribe(formData);
                 if (error) {
-                    setError(error)
+                    if (isInputError(error)) {
+                        // Handle input errors.
+                        if (error.fields.email) {
+                            const message = "invalid email - " + error.fields.email.join(', ');
+                            setError({ message })
+                        }
+                    } else {
+                        setError(error)
+                    }
                 }
                 console.log(data)
                 setResult(data)
                 // TODO: display result using state
                 //console.log({ result })
             }}
-            className="flex gap-4 mb-2"
+            className="flex flex-col md:flex-row gap-4 mb-2"
         >
             <input
-                className="rounded px-4 
+                onChange={() => {
+                    if (errorState) {
+                        setError(null)
+                    }
+                    if (result) {
+                        setResult(null)
+                    }
+                }}
+                className="rounded px-4 py-4
             text-gray-900 border border-slate-600 
             placeholder:text-gray-600
             dark:placeholder:text-gray-300
@@ -34,6 +50,7 @@ export function SubscribeForm() {
                 placeholder="Enter your email here"
                 type="email"
                 name="email"
+                required
             />
             <button
                 type="submit"
