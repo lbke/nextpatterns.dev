@@ -10,5 +10,7 @@ export default defineConfig({
 
   integrations: [tutorialkit()],
   output: "hybrid",
-  adapter: vercel(),
+  adapter: vercel({
+    webAnalytics: { enabled: true }
+  }),
 });
