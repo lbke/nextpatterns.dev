@@ -13,4 +13,5 @@ export default defineConfig({
   adapter: vercel({
     webAnalytics: { enabled: true }
   }),
+  site: "https://nextpatterns.dev"
 });

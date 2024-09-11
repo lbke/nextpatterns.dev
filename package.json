@@ -22,6 +22,7 @@
   "devDependencies": {
     "@astrojs/check": "^0.7.0",
     "@astrojs/react": "^3.6.0",
+    "@astrojs/rss": "^4.0.7",
     "@iconify-json/ph": "^1.1.13",
     "@iconify-json/svg-spinners": "^1.1.2",
     "@tutorialkit/astro": "^0.2.1",
