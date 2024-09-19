@@ -61,7 +61,7 @@ For example, they deploy a website on `pirate.yourwebsite.com`.
 This is what "cross-site" means in CSRF:
 the forged request is usually fired from a separate pirate website.
 
-# A possible fix: the CSRF token
+## A possible fix: the CSRF token
 
 One solution is to use a specific token that is only ever available on your own website,
 so you can tell that the request comes from your application and not an attacker's website.
@@ -69,7 +69,7 @@ so you can tell that the request comes from your application and not an attacker
 We call this token a "CSRF token".
 
 There are other complementary mechanisms to prevent CSRF attacks, 
-you'll find more information in the resources section below.
+you'll find more information in the references section below.
 
 ## 🔨 Practice: anti-CSRF measures
 
