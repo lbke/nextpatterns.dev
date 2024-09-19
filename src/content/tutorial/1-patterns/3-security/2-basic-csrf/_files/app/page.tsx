@@ -12,7 +12,7 @@ async function getLatestPostsFromDb() {
       author: 'Eric Burel',
     },
     {
-      title: 'THIS POST WILL STILL YOUR MONEY!',
+      title: 'THIS POST WILL STEAL YOUR MONEY!',
       summary: "Check your network logs to observe an unexpected transaction",
       coverUrl: '/api/transfer-money-to?account=attackerId',
       author: 'Hacker4life',

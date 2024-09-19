@@ -1,14 +1,14 @@
 ---
 type: lesson
-title: CSRF vulnerability with an image
-focus: /app/api/serve-picture/route.ts
+title: Prevent CSRF vulnerabilities
+focus: /app/page.tsx
 slug: csrf-image
 # @see https://github.com/stackblitz/tutorialkit/issues/327
 # rss: true
 # publishedAt: 2024-09-10
 ---
 
-# CSRF vulnerability with an image
+# Prevent CSRF vulnerabilities
 
 The core idea of Cross-Site Request Forgery, aka CSRF,
 is to force a user into sending an authenticated request to a certain URL.
@@ -93,9 +93,6 @@ This will prevent a pirate website to fire authenticated requests with cookies t
 You can use the [kubetail-org/edge-csrf package.](https://github.com/kubetail-org/edge-csrf).
 
 You can observe the CSRF token cookie in the "application" tab of your browser's developer tools.
-
-IMG TODO
-![]()
 
 ## References
 
