@@ -21,14 +21,14 @@ async function transferMoney(
 }
 
 //  ***
-// 🔨 PRACTICE HERE: 
-//    Use a "POST" endpoint instead, to limit CSRF risk
+// 🔨 SOLUTION: 
+//    Use a "POST" endpoint, to limit CSRF risk
 //    Useful documentation: 
 //    https://nextjs.org/docs/app/building-your-application/routing/route-handlers#convention
 // ***
-export async function GET(req: NextRequest) {
+export async function POST(req: NextRequest) {
     const { userId } = await getCurrentUser(req.cookies.get('auth_token'));
-    const accountId = req.nextUrl.searchParams.get('accountId')!;
+    const accountId = req.body['accountId'];
     await transferMoney({ from: userId, to: accountId });
     return NextResponse.json(
         {
