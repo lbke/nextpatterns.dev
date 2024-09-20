@@ -1,0 +1,101 @@
+---
+type: lesson
+title: No layout shift for spans
+focus: /app/page.tsx
+slug: span-layout-shift
+# @see https://github.com/stackblitz/tutorialkit/issues/327
+# rss: true
+# publishedAt: 2024-09-10
+---
+
+# No layout shift for inline elements
+
+Layout shift happens when an element of the page appears 
+after a loading period
+and no space was reserved for it.
+
+This is a well known issue with images: 
+the image source takes a few milliseconds to be downloaded by the browser,
+and then suddenly pops up in the page moving all content around it.
+
+Web auditing tools like Google Lighthouse can compute a Cumulative Layout Shift (CLS).
+You'll want to keep the CLS as small as possible.
+
+Let's observe a shift induced by displaying data
+that are fetched client-side.
+
+## Example: displaying a view counter
+
+Let's say that you own a beautiful personal blog.
+You want to display a visitor count on top of your article.
+
+This data is provided by an API,
+so you trigger an HTTP request to get the view count,
+and then display it.
+
+Sadly, this creates a layout shift,
+as seen in the code demo. 
+Click the reload button in the preview (<i class="i-ph-arrow-clockwise inline-block"/>) to see the shift.
+
+## A possible fix: reserve some space for the span
+
+Layout shift can be provoked by any kind of HTML element.
+In this example, we focus on inline text elements, like `<span>>`
+
+To prevent a layout shift, rather than rendering nothing,
+we can render an empty span element with no content.
+
+Sadly, a totally empty span has no height.
+So instead, we need to render a span with dummy content,
+and make it invisible during loading.
+
+Jump to the practice section,
+or click the "solve" button to see the result.
+
+
+## 🔨 Practice: a "NoShiftClientOnlySan" component
+
+import SkipPractice from "@/components/SkipPractice.mdx"
+
+<SkipPractice />
+
+
+## 🧐 Advanced solution: server-side data fetching
+
+Another way to prevent a layout shift is to load the view count server-side.
+This will remove the need for a client-side fetch call in the first place.
+
+There is no layout shift for data that are already present in the HTML tree.
+
+There are a few different ways to achieve that in Next.js :
+
+- Get the visitor count from a React Server Component. 
+
+Keep in mind that fetching dynamic data like a view count
+may make the whole page dynamically rendered, for every request.
+
+- Get the visitor count from a React Server Component 
+and pass them to a client-side data fetching library.
+
+For instance [SWR has a fallback attribute](https://swr.vercel.app/docs/with-nextjs#pre-rendering-with-default-data) to achieve that.
+More broadly
+
+- Get the visitor count from a React Server Component and enable Partial Prerendering (PPR).
+The visitor count will be rendered on every request, 
+but the rest of the page will stay static!
+However this will involve a loading time client-side, so you'll still have to fix the layout shift.
+
+- Keep your data fetching call client-side. It's fine!
+
+:::info
+Using dynamic data in static pages is so much fun
+that I've published [a complete video course about it at Newline.co](https://www.newline.co/courses/blazing-fast-next.js-with-react-server-components)
+:::
+
+## References
+
+[Cumulative Layout Shift, web.dev](https://web.dev/articles/cls). 
+
+import BetaBanner from "@/components/BetaBanner.mdx"
+
+<BetaBanner />
