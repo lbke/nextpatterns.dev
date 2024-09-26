@@ -9,8 +9,8 @@ import { useClient } from "../hooks/useClient"
  * @returns 
  */
 export function NoShiftClientOnlySpan({ children, hide }: { hide?: boolean, children: React.ReactNode }) {
-    const isMounted = useClient()
-    if (!isMounted || hide) return <span style={{ opacity: 0 }}>{"| "}</span>
+    const isClient = useClient()
+    if (!isClient || hide) return <span style={{ opacity: 0 }}>{"| "}</span>
     return <span style={{ opacity: 1, transition: "opacity 0.1s" }}>
         {children}
     </span>

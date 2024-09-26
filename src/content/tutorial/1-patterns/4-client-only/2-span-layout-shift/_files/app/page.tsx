@@ -7,7 +7,9 @@ export default function HomePage() {
     const { data: viewCount } = useData("/api/view-count")
     return (
         <div className="max-w-2xl mx-auto p-6">
-            <p className="italic">You will see a layout shift below after 1 second.</p>
+            <p className="italic">You will see a layout shift below after 1 second.
+                Refresh the preview if you didn't see it.
+            </p>
             <div className="border border-pink-500">
                 {!!viewCount
                     ? <span>{viewCount} views for this article</span>

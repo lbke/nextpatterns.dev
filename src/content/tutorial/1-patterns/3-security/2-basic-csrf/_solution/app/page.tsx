@@ -25,6 +25,8 @@ export default async function Home() {
   return (
     <main className="min-h-screen p-24">
       <h1>Latest posts</h1>
+      <p><strong>The vulnerability is now fixed!</strong></p>
+      <p>The hacker's image URL won't trigger a money transfer anymore.</p>
       <div className="w-full grid grid-cols-1 md:grid-cols-2 gap-8">
         {!latestPosts.length ? <p>No posts yet</p> : null}
         {latestPosts.map(({ title, coverUrl, author, summary }) => (
