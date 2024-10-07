@@ -4,11 +4,6 @@
 
 :root,
 :root[data-theme='light'] {
-
-    --np-logo-dark-blue: #101a3f;
-    --np-logo-cyan: #42cde6;
-    --np-light-mint: #c0ecf2;
-
     /* tutorial kit values */
     --tk-background-primary: theme('colors.gray.0');
     --tk-background-secondary: theme('colors.gray.50');
@@ -140,6 +135,13 @@
  * Hierarchy: Element Token -> (Element Token | Color Tokens) -> Primitives
  */
 :root {
+    /* Patterns colors */
+    --np-dark-red: #3f1010;
+    --np-dark-blue: #101a3f;
+    --np-cyan: #42cde6;
+    --np-light-mint: #c0ecf2;
+    --np-red: #e03879ff;
+    --np-cream: rgb(250, 245, 236);
     /* App */
     --tk-elements-app-backgroundColor: var(--tk-background-primary);
     --tk-elements-app-borderColor: var(--tk-border-primary);
@@ -394,38 +396,42 @@
     --tk-elements-callouts-success-codeBackgroundColor: var(--tk-background-secondary);
 }
 
-/*
-[data-theme='light'] {
-    .markdown-content {
-        h1 {
-            color: var(--np-logo-dark-blue);
-            padding-top: 4px;
-            padding-bottom: 4px;
-        }
+/** BENTO DESIGN */
 
-    }
-
+nav {
+    @apply rounded-xl my-1 mx-1 md:mx-2 shadow-sm;
 }
 
-.markdown-content {
-    img {
-        border-radius: 12px;
-        box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-        margin: 8px auto;
+body {
+    /*@apply bg-[var(--np-cream)] dark:bg-[var(--np-dark-red)];*/
+    @apply bg-[var(--np-cream)] dark:bg-black dark:bg-[url("/img/red_blip.webp")] bg-[url("/img/blue_blip.webp")] bg-no-repeat bg-center bg-auto;
+}
+
+[data-id='main-panel'] {
+    @apply p-1 md:p-2;
+
+    &>div {
+        @apply rounded-xl shadow-sm;
     }
 }
 
+/** TODO find a way to add a gap to the flex element instead */
+#editor-opened {
+    @apply p-1 md:p-2 bg-transparent;
 
-[data-theme='dark'] {
-    .markdown-content {
-        h1 {
-            color: var(--np-light-mint);
-            padding-top: 4px;
-            padding-bottom: 4px;
-        }
+    &>div {
+        @apply rounded-xl shadow-sm;
     }
 }
-*/
+
+#previews-opened {
+    @apply p-1 md:p-2 bg-transparent;
+
+    &>div {
+        @apply rounded-xl shadow-sm;
+    }
+}
+
 
 .markdown-content {
     @apply lg:mx-auto lg:max-w-3xl xl:max-w-4xl;
@@ -437,7 +443,7 @@
     }
 
     h1 {
-        @apply text-6xl mb-12;
+        @apply text-4xl md:text-6xl mb-12 md:mb-16 relative;
     }
 
     h2 {
@@ -452,4 +458,25 @@
     p>strong:only-child {
         @apply text-lg;
     }
+
+    figcaption.header {
+        @apply font-italic text-sm font-mono;
+    }
+}
+
+/** Title blip */
+.markdown-content {
+    h1::after {
+        content: "";
+        z-index: 0;
+        position: absolute;
+        bottom: -24px;
+        left: 0px;
+        width: 66%;
+        height: 4px;
+        border-radius: 50%;
+        background: var(--np-cyan);
+        background: linear-gradient(90deg, #42cde600 0%, #42cde6ff 50%, #42cde600 100%);
+    }
+
 }
