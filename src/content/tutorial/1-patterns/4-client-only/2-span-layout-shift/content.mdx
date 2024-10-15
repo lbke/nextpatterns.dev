@@ -14,6 +14,7 @@ Layout shift happens when an element of the page appears
 after a loading period
 and no space was reserved for it.
 
+
 This is a well known issue with images: 
 the image source takes a few milliseconds to be downloaded by the browser,
 and then suddenly pops up in the page moving all content around it.
@@ -29,9 +30,12 @@ that are fetched client-side.**
 Let's say that you own a beautiful personal blog.
 You want to display a visitor count on top of your article.
 
+![An illustration of a layout shift](./layout_shift.gif)
+
 This data is provided by an API,
 so you trigger an HTTP request to get the view count,
-and then display it. Sadly, this creates a layout shift,
+and then display it. 
+Sadly, the loading delay creates a layout shift,
 as seen in the code demo. 
 
 Click the reload button in the preview (<i class="i-ph-arrow-clockwise inline-block"/>) to see the shift.
@@ -39,12 +43,12 @@ Click the reload button in the preview (<i class="i-ph-arrow-clockwise inline-bl
 ## A possible fix: reserve some space for the span
 
 Layout shift can be provoked by any kind of HTML element.
-In this example, we focus on inline text elements, like `<span>`
+In this example, we focus on inline text elements, like `<span>`.
 
 To prevent a layout shift, rather than rendering nothing,
 we can render an empty span element with no content.
 
-Sadly, a totally empty span has no height.
+A totally empty span has no height.
 So instead, we need to render a span with dummy content,
 and make it invisible during loading.
 
@@ -58,13 +62,17 @@ import SkipPractice from "@/components/SkipPractice.mdx"
 
 <SkipPractice />
 
-- Create a component named `NoShiftClientOnlySpan`
-- Import the `useClient` hook from "@/hooks/useClient"
-- If `useClient` returns false, render an invisible span: `<span style={{ opacity: 0 }}>{"| "}</span>`
-- If `useClient` returns true, return a span containing the children
+- Open the component named `NoShiftClientOnlySpan`
+- If `hasData` is false, render an invisible span: `<span style={{ opacity: 0 }}>{"| "}</span>`
+- If `hasData` is true, return a span containing the children prop
 
 Thanks to the span of opacity 0 and containing a single "|" character (a vertical bar),
 some space is reserved for your text content until it actually loads.
+
+The `useClient` hook can also be used 
+if you need to use the `window` object
+or any client-side only API 
+to render some content.
 
 
 ## 🧐 Advanced solution: server-side data fetching
@@ -73,27 +81,28 @@ Another way to prevent a layout shift is to load the view count server-side.
 This will remove the need for a client-side fetch call in the first place.
 
 There is no layout shift for data that are already present in the HTML tree
-after a server-render.
+after a server-render. There are a few different ways to achieve that in Next.js :
 
-There are a few different ways to achieve that in Next.js :
-
-- Get the visitor count from a React Server Component. 
+1) **Get the visitor count from a React Server Component.**
 
 Keep in mind that fetching dynamic data like a view count
 may make the whole page dynamically rendered, for every request.
 
-- Get the visitor count from a React Server Component 
-and pass them to a client-side data fetching library.
+2) **Get the visitor count from a React Server Component 
+and pass them to a client-side data fetching library.**
 
 For instance [SWR has a fallback attribute](https://swr.vercel.app/docs/with-nextjs#pre-rendering-with-default-data) to achieve that.
-More broadly
 
-- Get the visitor count from a React Server Component and enable Partial Prerendering (PPR).
-The visitor count will be rendered on every request, 
+3) **Get the visitor count from a React Server Component and enable Partial Prerendering (PPR).**
+
+The visitor count will be rendered dynamically on every request, 
 but the rest of the page will stay static!
 However this will involve a loading time client-side, so you'll still have to fix the layout shift.
 
-- Keep your data fetching call client-side. It's fine!
+4) **Keep your data fetching call client-side. It's fine!**
+
+Don't get peer-pressured into using a modern pattern like server-side rendering,
+if you don't need it in your application. Whatever works is fine :)
 
 :::info
 Using dynamic data in static pages is so much fun
@@ -111,6 +120,8 @@ import Thanks from "@/components/Thanks.mdx"
 [Text content does not match server-rendered HTML - nextjs.org](https://nextjs.org/docs/messages/react-hydration-error).
 
 [How to Get Rid of “Window is Not Defined” and Hydration Mismatch Errors in Next.js - Eric Burel](https://medium.com/@eric.burel/how-to-get-rid-of-window-is-not-defined-and-hydration-mismatch-errors-in-next-js-567cc51b4a17)
+
+[Blazing Fast Next.js with React Server Components - Newline.co](https://www.newline.co/courses/blazing-fast-next.js-with-react-server-components)
 
 import BetaBanner from "@/components/BetaBanner.mdx"
 

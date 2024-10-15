@@ -1,6 +1,6 @@
 "use client"
+import { NoShiftClientOnlySpan } from './components/NoShiftClientOnlySpan'
 import { useData } from './hooks/useData'
-// import { NoShiftClientOnlySpan } from "./NoShitClientOnlySpan"
 
 export default function HomePage() {
     // this shortsyntax destructures the return value of "useData",
@@ -8,21 +8,15 @@ export default function HomePage() {
     const { data: viewCount } = useData("/api/view-count")
     return (
         <div className="max-w-2xl mx-auto p-6">
-            <p className="italic">You will see a layout shift below after 1 second.
-                Refresh the preview if you didn't see it.
+            <p className="italic">No more layout shift! Hit the refresh icon to see it in action.
             </p>
             <div className="border border-pink-500">
-                {/** 
-                 * 🔨 PRACTICE HERE: 
-                 * Implement NoShiftClientOnlySpan.tsx
-                 * and use it here
-                 */}
-                {/** <NoShiftClientOnlySpan hasData={typeof viewCount === "number"}> */}
-                {!!viewCount
-                    ? <span>{viewCount} views for this article</span>
-                    : null
-                }
-                {/** </NoShiftClientOnlySpan> */}
+                <NoShiftClientOnlySpan hasData={typeof viewCount === "number"}>
+                    {!!viewCount
+                        ? <span>{viewCount} views for this article</span>
+                        : null
+                    }
+                </NoShiftClientOnlySpan>
             </div>
             <h1 className="text-3xl font-bold mb-4">Client-Only JavaScript: Enhancing Web Interactivity</h1>
             <div className='space-y-4 text-gray-700'>

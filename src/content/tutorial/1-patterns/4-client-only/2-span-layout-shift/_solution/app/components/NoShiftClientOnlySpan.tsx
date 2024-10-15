@@ -7,11 +7,8 @@
  * @returns 
  */
 export function NoShiftClientOnlySpan({ children, hasData }: { hasData?: boolean, children: React.ReactNode }) {
-    /** 
-     * 🔨 PRACTICE HERE: 
-     * Implement NoShiftClientOnlySpan.tsx
-     * - if hasData is false, return a span, with content "|" and opacity 0
-     * - if hasData is true, return a span, with content {childen} and opacity 1
-     */
-    return children
+    if (!hasData) return <span style={{ opacity: 0 }}>{"| "}</span>
+    return <span style={{ opacity: 1, transition: "opacity 0.1s" }}>
+        {children}
+    </span>
 }
