@@ -1,0 +1,58 @@
+---
+import Timeline from "@/landing/ui/Timeline.astro";
+import Headline from "@/landing/ui/Headline.astro";
+// import Image from "@/landing/common/Image.astro";
+
+const items = [
+  {
+    title:
+      '<span class="font-medium text-base">A straight-to-the-point article focused on real-world use cases, with resources for further exploration</span>',
+    description:
+      "Learn how to solve a precise problem. For instance, serving files from Next.js, or using client-only code in your React components.",
+    icon: "hugeicons:target-02",
+  },
+  {
+    title:
+      '<span class="font-medium text-base">An optional practical exercise with live preview in a webcontainer</span>',
+    description: "Run a Next.js app in your browser, no install required.",
+    icon: "hugeicons:mouse-11",
+  },
+  {
+    title:
+      '<span class="font-medium text-base">A complete code demonstration</span>',
+    description:
+      "Why use many words when a little demo does the trick ? Each pattern comes with a realistic working implementation.",
+    icon: "hugeicons:computer-programming-01",
+  },
+];
+export const id = "concept";
+{
+  /*layout="cover"*/
+}
+---
+
+<div
+  id={id}
+  class="relative mx-auto max-w-7xl px-4 md:px-6 mt-4 mb-4 text-default"
+>
+  <Headline
+    title="Patterns are self‑contained, <br/> goal‑oriented and interactive tutorials"
+    classes={{
+      container: "text-left",
+      title: "text-2xl md:text-4xl justify start mb-12 mt-24 md:mb-0",
+    }}
+  />
+  <div class="flex flex-col gap-8 mx-6 md:gap-32 items-center lg:flex-row">
+    <div class="relative lg:basis-1/2">
+      <img
+        class="object-cover object-top rounded-md shadow-lg bg-gray-400 dark:bg-slate-700"
+        src="/img/interface.webp"
+        alt="Pattern = article + practice + preview"
+        loading="lazy"
+      />
+    </div>
+    <div class="md:py-4 md:self-center lg:max-w-96 lg:basis-1/2 w-full">
+      <Timeline items={items} />
+    </div>
+  </div>
+</div>

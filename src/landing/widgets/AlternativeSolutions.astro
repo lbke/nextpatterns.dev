@@ -1,0 +1,52 @@
+<section
+  id="other-solutions"
+  class="flex flex-col mt-24 mb-20 pt-8 md:pt-16 pb-16
+  bg-gradient-to-r from-slate-800 from-1%"
+>
+  <div
+    class="mb-12
+    text-center font-bold leading-tighter tracking-tighter font-heading text-heading text-2xl md:text-4xl"
+  >
+    <h2>Do we really need a course for that? 🤔</h2>
+  </div>
+  {/* argumentaire stackoverflow */}
+
+  <div class="max-w-screen-2xl mx-auto">
+    <div class="flex w-full flex-col xl:flex-row px-8 gap-8 xl:gap-24 xl:mb-8">
+      <div class="basis-1/2 flex justify-center xl:justify-end">
+        <img src="/img/stackoverflow.jpeg" class="rounded-2xl shadow-lg shadow-slate-500 w-[600px]" />
+      </div>
+      <div class="flex flex-col mt-8 items-center xl:items-start basis-1/2">
+        <h2 class="text-xl font-bold">StackOverflow is great, but...</h2>
+        <div class="text-slate-300 mt-2 text-justify text-md">
+          <p>
+            A quick search with the keywords "window not defined next" on StackOverflow gives me... 4,334 results!! 😦
+          </p>
+          <p>
+            I did take the time to read a few dozen. Most answers miss the point that this issue may actually come from
+            different causes, and that each cause needs its own solution.
+          </p>
+        </div>
+      </div>
+    </div>
+
+    {/* argumentaire LLM */}
+
+    <div class="flex mt-16 w-full flex-col xl:flex-row px-8 gap-8 xl:gap-24">
+      <div class="flex flex-col mb-8 items-center xl:items-end basis-1/2">
+        <h2 class="text-xl font-bold">LLMs are great, but...</h2>
+        <div class="text-slate-300 flex-col mt-2 text-md text-left xl:mx-0 xl:text-right">
+          <p class="block">
+            LLMs only work with good prompts. They can hardly invent original patterns if a problem hasn't been solved.
+          </p>
+        </div>
+      </div>
+      <div class="flex basis-1/2 justify-center xl:justify-start">
+        <img
+          src="/img/refuse_demo_security.png"
+          class="brightness-75 rounded-2xl shadow-lg shadow-slate-400 w-[600px] h-auto"
+        />
+      </div>
+    </div>
+  </div>
+</section>

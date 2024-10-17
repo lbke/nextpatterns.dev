@@ -1,0 +1,122 @@
+---
+import type { Widget } from "@/types";
+
+export interface Props extends Widget {
+  title?: string;
+  linkText?: string;
+  linkUrl?: string | URL;
+  information?: string;
+  count?: number;
+}
+
+const worksFromAuthor = [
+  {
+    link: "https://prismic.io/blog/advanced-nextjs-server-context",
+    title:
+      "Leveraging Server Context for Advanced Next.js Optimization Patterns",
+    image: "/prismic-article.png",
+    excerpt:
+      "In this article, I focus on the concept of “server cache”. We learn why accessing this context or extending it is very important, and how it can be done in practice, through the example of Next.js 13’s new methods: “headers()”, “cookies()”, patched fetch(), and React 18 cache.",
+    readMore: "Read on Prismic Blog",
+  },
+  {
+    link: "https://www.smashingmagazine.com/2022/07/new-pattern-jamstack-segmented-rendering/",
+    title: "A New Pattern For The Jamstack: Segmented Rendering",
+    image: "/img/http_segments.png",
+    excerpt:
+      "Among all possible architectures for rendering a website, static rendering is the most performant. Yet, it’s only applicable to public, generic content. Or is it? In this article, we will push the boundaries of static rendering and learn how to apply it to personalized content. This new pattern is called “Segmented Rendering” and will change the Jamstack game forever.",
+    readMore: "Read on Smashing Magazine",
+  },
+  {
+    link: "https://www.newline.co/courses/blazing-fast-next.js-with-react-server-components",
+    title: "Blazing Fast Next.js with React Server Components",
+    image: "/img/newline.webp",
+    excerpt:
+      "Learn how to build blazingly fast websites with Next.js. Static rendering is often underrated: it’s very fast, very cheap, but hard to use in advanced scenarios. This course introduces students to personalization with static rendering by using React Server Components, the latest paradigm shift in React.",
+    readMore: "Visit Newline website",
+  },
+];
+---
+
+<section class="flex flex-col max-w-screen-2xl mx-auto mb-36 mt-10">
+  <div class="flex flex-col md:mb-0 lg:items-end mb-8 mr-16">
+    <div class="md:max-w-lg mx-4">
+      <h2
+        class="text-3xl mx-auto font-bold tracking-tight sm:text-3xl sm:leading-none group font-heading mb-2"
+      >
+        More works from the author
+      </h2>
+      {
+        /*
+            
+            
+      
+              <Button variant="link" href={linkUrl}>
+                {' '}
+                {linkText} »
+              </Button>
+                    */
+      }
+    </div>
+
+    <p
+      class="text-md
+      text-left
+      lg:text-right
+      mb-4 mx-4 mt-2
+      dark:text-slate-300
+      lg:max-w-xl lg:mt-6 lg:mb-10"
+    >
+      NextPatterns tutorials are based on my research works on the topics of
+      Next.js, Server-Side Rendering, and web development in general. These
+      works have been published on renowned publications like Smashing Magazine
+      and Prismic Blog.
+    </p>
+  </div>
+
+  <div
+    class="grid justify-center mx-40 md:mx-12 gap-6 row-gap-5 md:grid-cols-2 lg:grid-cols-3 -mb-6"
+  >
+    {
+      worksFromAuthor.map((work) => (
+        <Fragment>
+          <article class="mb-6 transition">
+            <div class="relative md:h-40 w-52 mx-auto rounded shadow-lg mb-6 border-gray-600 border">
+              <a href={work.link} target="_blank" class="">
+                <img
+                  src={work.image}
+                  class="object-cover h-full rounded shadow-lg"
+                  alt={work.title}
+                />
+              </a>
+            </div>
+            <h3 class="text-xl sm:text-lg font-bold leading-tight mb-2 font-heading dark:text-slate-300">
+              {work.link ? (
+                <a
+                  class="mx-0 md:mx-8 inline-block hover:text-primary dark:hover:text-blue-700 transition ease-in duration-200"
+                  href={work.link}
+                  target="_blank"
+                >
+                  {work.title}
+                </a>
+              ) : (
+                work.title
+              )}
+            </h3>
+            <p class="hidden md:block text-muted md:mx-8  dark:text-slate-400 text-xs mb-3">
+              <a href={work.link} target="_blank">
+                {work.excerpt}
+              </a>
+            </p>
+            <p class="block md:hidden text-muted md:mx-8  dark:text-slate-400 text-xs mb-3">
+              {work.excerpt.slice(0, 50) + "... "}
+              <a href={work.link} target="_blank">
+                Lire la suite
+              </a>
+            </p>
+          </article>
+        </Fragment>
+      ))
+    }
+  </div>
+</section>

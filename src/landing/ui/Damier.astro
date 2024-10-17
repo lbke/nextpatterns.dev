@@ -1,0 +1,59 @@
+---
+import Feature from "./Feature.astro";
+import { Icon } from "astro-icon/components";
+//import SectionTitle from '@/components/SectionTitle.astro';
+---
+
+<div
+  class="grid justify-center mx-auto max-w-screen-xl
+  grid-cols-1 gap-x-16 gap-y-8 sm:gap-y-16 sm:grid-cols-2 md:grid-cols-3 xl:grid-cols-5"
+>
+  <a href="/client-only" target="_blank" class="">
+    <Feature class="shadow-orange-600">
+      <p class="text-lg text-center font-sans mb-2">Client-only</p>
+      <Icon name="hugeicons:globe-02" size={48} class="text-orange-600" />
+    </Feature>
+  </a>
+
+  <a href="/security" target="_blank">
+    <Feature class="shadow-green-600">
+      <p class="text-lg text-center font-sans">Security</p>
+      <Icon name="hugeicons:security-lock" size={48} class="text-green-600" />
+    </Feature>
+  </a>
+  <a href="/testing" target="_blank">
+    <Feature class="shadow-blue-600">
+      <p class="text-lg text-center font-sans">Testing</p>
+      <Icon name="hugeicons:wrench-01" size={48} class="text-blue-600" />
+    </Feature>
+  </a>
+  {/* <a href="mailto:contact@lbke.fr" target="_blank"> */}
+  <Feature class="shadow-rose-600" disabled>
+    <p class="text-xl text-center font-sans">I18n</p>
+    <Icon name="hugeicons:book-04" size={48} class="text-rose-600" />
+  </Feature>
+  {/* </a> */}
+  {/* <a href="mailto:contact@lbke.fr" target="_blank"> */}
+  <Feature class="shadow-yellow-600" disabled>
+    <p class="text-lg text-center font-sans">LLM</p>
+    <Icon name="hugeicons:robotic" size={48} class="text-yellow-600" />
+  </Feature>
+  {/* </a> */}
+
+  <a href="/hidden-gems" target="_blank">
+    <Feature class="shadow-violet-600">
+      <p class="text-lg text-center font-sans mb-2">Hidden Gems</p>
+      <Icon name="hugeicons:diamond-02" size={48} class="text-violet-600" />
+    </Feature>
+  </a>
+
+  <style>
+    .subtitle {
+      font-family: "Calibri Light";
+    }
+
+    .title {
+      font-family: "Roboto", sans-serif;
+    }
+  </style>
+</div>

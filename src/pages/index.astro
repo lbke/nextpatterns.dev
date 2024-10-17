@@ -1,0 +1,168 @@
+---
+import Layout from "@/landing/layouts/PageLayout.astro";
+import AuthorSection from "@/landing/sections/AuthorSection.astro";
+import VideoIntroSteps from "@/landing/sections/VideoIntroSteps.astro";
+import FAQWithContent from "@/landing/sections/FAQWithContent.astro";
+import { FormAbonnement } from "@/landing/widgets/FormAbonnement";
+
+import Hero2 from "@/landing/widgets/Hero2.astro";
+//import Content from '@/components/widgets/Content.astro';
+
+import WorksAuthor from "@/landing/sections/WorksAuthor.astro";
+{
+  /*import Testimonials from '@/components/widgets/Testimonials.astro';*/
+}
+import Damier from "@/landing/ui/Damier.astro";
+import { Abonnement } from "@/landing/widgets/Abonnement";
+import AlternativeSolutions from "@/landing/widgets/AlternativeSolutions.astro";
+import HeaderNav from "@/landing/common/HeaderNav.astro";
+import { SITE } from "@landing/config/SITE";
+
+const metadata = {
+  title: "NextPatterns",
+};
+---
+
+<Layout metadata={metadata}>
+  <HeaderNav slot="header" />
+
+  <!-- Hero2 Widget ******************* -->
+
+  <Hero2
+    actions={[
+      {
+        variant: "primary",
+        target: "_blank",
+        text: "Open the app",
+        href: SITE.appHome,
+      },
+      { text: "Join the newsletter", href: "#newsletter" },
+    ]}
+  >
+    <Fragment slot="title"> Master Next.js with patterns </Fragment>
+
+    <Fragment slot="subtitle">
+      <span class="hidden sm:inline">
+        Become a better developer, one pattern at a time. Easy to understand,
+        practical, and full of examples.
+      </span>
+    </Fragment>
+  </Hero2>
+
+  <!-- Texte introductif avec vidéo **************** -->
+  <VideoIntroSteps />
+
+  <!-- Banderole renards **************** -->
+  <div
+    class="hidden lg:block min-h-[200px] mt-20 mb-20 bg-repeat"
+    style="background-image:url(/img/g6.png)"
+  >
+  </div>
+
+  <!-- Damier des catégories de patterns **************** -->
+  <div
+    class="pt-4
+    max-w-screen-2xl xl:min-h-[825px] min-w-[250px]
+    mx-2 xl:mx-auto sm:mx-8 md:mx-10 py-16 lg:mx-24
+    md:px-8 px-4
+    dark:bg-slate-950 shadow-2xl rounded-xl shadow-sky-500 justify-center"
+  >
+    <div
+      class="mx-auto items-center my-8 text-4xl font-bold text-center
+      lg:flex flex-col md:items-center"
+    >
+      <h2>
+        <span
+          class="font-bold leading-tighter tracking-tighter font-heading text-heading text-2xl md:text-4xl"
+          >Patterns are for real-life.</span
+        >
+      </h2>
+    </div>
+    <p class="text-muted mt-2 mb-12 text-center">
+      NextPatterns covers a wide range of problems that developers face on a
+      daily basis.
+    </p>
+    <div>
+      <p></p>
+    </div>
+
+    <Damier />
+  </div>
+
+  <!-- Pricing **************** -->
+  <div
+    id="pricing"
+    class="scroll-mt-56 flex flex-col mt-40 mb-4 md:mb-16 items-center mx-8"
+  >
+    <h2
+      class="mb-2 text-center font-bold leading-tighter tracking-tighter font-heading text-heading text-2xl md:text-4xl"
+    >
+      Pricing
+    </h2>
+    <p class="text-slate-400 mt-4 text-center">
+      NextPatterns is currently in beta and will stay free until a finished
+      version is released.
+    </p>
+    <p class="mt-4 text-slate-400 text-center">
+      New patterns will come up regularly. The course platform is already live, <a
+        href="https://nextpatterns.dev/p/get-started/welcome"
+        target="_blank"
+        class="underline"
+      >
+        try it out !</a
+      >
+    </p>
+  </div>
+
+  <!-- Abonnement **************** -->
+  <FormAbonnement client:load />
+
+  <!-- Comparaison aux autres solutions **************** -->
+  <AlternativeSolutions />
+  {
+    /*<!-- Recommendations **************** -->
+  <div class="mt-20 mb-36">
+    <Testimonials
+      testimonials={[
+        {
+          testimonial: `Eric's knowledge of the intricacies of Next.js and the pros and cons of all the different server and client architecture goes far beyond any other developer I've worked with, to the point where he could probably write a PhD dissertation on the topic if he wanted to.`,
+          name: 'Sacha Greif',
+          job: 'Creator of Devographics surveys',
+          image: {
+            src: '/img/sachagreif.png',
+            alt: 'Sacha Greif Image',
+          },
+        },
+        {
+          testimonial: `The course is very enjoyable, and I appreciate the hands-on approach where you actually have to write some code. The explanations are thorough but not boring, and you gain a clear grasp of the problem before diving into the specific Next.js pattern.`,
+          name: 'Erfan Ebrahimnia',
+          job: 'Curator of http://NextjsWeekly.com',
+          image: {
+            src: '/img/erfan_ebrahimnia.jpg',
+            href: 'https://x.com/ErfanEbrahimnia',
+            alt: 'Erfan Ebrahimnia Image',
+          },
+        },
+      ]}
+    >
+      <div slot="bg" class="absolute inset-0 bg-pink-300 dark:bg-black"></div>
+    </Testimonials>
+  </div> */
+  }
+
+  <!-- About Eric Burel **************** -->
+  <AuthorSection />
+
+  <!-- Travaux Eric **************** -->
+  <WorksAuthor>
+    <Fragment slot="bg">
+      <div class="absolute mb-24 inset-0 bg-blue-50 dark:bg-transparent"></div>
+    </Fragment>
+  </WorksAuthor>
+
+  <!-- FAQs Widget ******************* -->
+  <FAQWithContent />
+
+  <!-- Abonnement ******************* -->
+  <Abonnement client:load />
+</Layout>

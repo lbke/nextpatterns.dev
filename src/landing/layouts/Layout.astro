@@ -1,0 +1,57 @@
+---
+import '@/landing/assets/styles/tailwind.css';
+
+import { I18N } from '@/landing/config/I18N';
+
+import CommonMeta from '@/landing/common/CommonMeta.astro';
+import CustomStyles from '@/landing/common/CustomStyles.astro';
+import ApplyColorMode from '@/landing/common/ApplyColorMode.astro';
+import Metadata from '@/landing/common/Metadata.astro';
+import SiteVerification from '@/landing/common/SiteVerification.astro';
+import Analytics from '@/landing/common/Analytics.astro';
+import BasicScripts from '@/landing/common/BasicScripts.astro';
+
+// Comment the line below to disable View Transitions
+import { ViewTransitions } from 'astro:transitions';
+
+import type { MetaData as MetaDataType } from '@/types';
+import { getPermalink } from '@landing/utils/permalinks';
+
+export interface Props {
+  metadata?: MetaDataType;
+}
+
+const { metadata = {} } = Astro.props;
+const { language, textDirection } = I18N;
+---
+
+<!doctype html>
+<html lang={language} dir={textDirection} class="2xl:text-[20px]">
+  <head>
+    <link rel="icon" type="image/svg+xml" href={getPermalink("/favicon.svg")} />
+    <CommonMeta />
+    <CustomStyles />
+    <ApplyColorMode />
+    <Metadata {...metadata} />
+    <SiteVerification />
+    <Analytics />
+
+    <!-- Comment the line below to disable View Transitions -->
+    <ViewTransitions fallback="swap" />
+  </head>
+
+  <body class="antialiased text-default bg-page tracking-tight">
+    <slot />
+
+    <BasicScripts />
+
+    <style is:global>
+      img {
+        content-visibility: auto;
+      }
+      {/*div {
+        border: 1px solid pink;
+      }*/}
+    </style>
+  </body>
+</html>

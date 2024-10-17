@@ -1,0 +1,42 @@
+---
+import FAQs from "@/landing/widgets/FAQs.astro";
+---
+
+<section class="scroll-mt-40 mb-28" id="FAQ">
+  <FAQs
+    title="Frequently Asked Questions"
+    items={[
+      {
+        title: "Can I use NextPatterns to feed an LLM?",
+        description:
+          "NextPatterns' format is optimal for training AIs: we provide an explanation in natural language coupled with code demonstrations. \
+              Reach out to us at contact@nextpatterns.dev for more info.",
+        icon: "tabler:chevrons-right",
+      },
+      {
+        title: "Is it free?",
+        description:
+          "Patterns are a bit like blog articles. We plan to leave the most interesting patterns free and public forever. \
+            To support the project, we may add a paywall with a monthly read limit at some point, as well as premium-only resources.",
+        icon: "tabler:chevrons-right",
+      },
+      {
+        title: "Is it open to beginners?",
+        description:
+          'Patterns are tailored for Next.js developers of any level. You can go even further by following the resources linked at the end of each pattern. \
+              We advise that you follow the official <a href="https://nextjs.org/learn" target="_blank" class="underline">Next.js Learn tutorial</a>.',
+        icon: "tabler:chevrons-right",
+      },
+      {
+        title: "Is it similar to Next.js documentation?",
+        description: `We love crafting original patterns that are not yet covered by Next.js documentation! \
+          This course is more focused on practical issues you face in specific real-life projects.`,
+        icon: "tabler:chevrons-right",
+      },
+    ]}
+  >
+    <Fragment slot="bg">
+      <div class="absolute inset-0 bg-blue-50 dark:bg-transparent"></div>
+    </Fragment>
+  </FAQs>
+</section>

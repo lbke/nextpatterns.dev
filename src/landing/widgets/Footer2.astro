@@ -1,0 +1,94 @@
+---
+import { Icon } from "astro-icon/components";
+import { FormAbonnementFooter } from "@/landing/widgets/FormAbonnementFooter";
+---
+
+<footer
+  class="flex flex-col items-end text-center pt-16 bg-black text-white w-full"
+>
+  <div class="grid grid-cols-1 lg:grid-cols-2 w-full px-4 mb-16">
+    <div
+      class="grid grid-cols-2 sm:grid-cols-3
+      gap-x-4 gap-y-8
+      justify-self-center lg:justify-self-end
+      lg:mr-8"
+    >
+      <div class="w-full px-4">
+        <h2 class="mb-6 text-left">Patterns</h2>
+        <div class="text-xs text-left leading-8">
+          <p><a href="/client-only" target="_blank">Client-only</a></p>
+          <p><a href="/security" target="_blank">Security</a></p>
+          <p><a href="/testing" target="_blank">Testing</a></p>
+          <p class="hidden"><a href="/i18n" target="_blank">I18n</a></p>
+          <p class="hidden">LLM</p>
+          <p>Hidden Gems</p>
+        </div>
+      </div>
+      <div class="w-full px-4">
+        <h2 class="mb-6 text-left">Informations</h2>
+        <div class="text-xs text-left leading-8">
+          <p><a href="/#concept" target="_blank">Concept</a></p>
+          <p><a href="/#pricing" target="_blank">Pricing</a></p>
+          <p class="hidden">CGU/ToU</p>
+          <p class="hidden">CGV/T&C</p>
+          <p><a href="/#FAQ" target="_blank">FAQ</a></p>
+        </div>
+      </div>
+      <div class="w-full px-4">
+        <h2 class="mb-6 text-left">About us</h2>
+        <div class="text-xs text-left leading-8">
+          <p><a href="/#about" target="_blank">The author</a></p>
+          <p><a href="https://www.lbke.fr" target="_blank">Company</a></p>
+          <p><a href="/contact" target="_blank">Contact us</a></p>
+        </div>
+      </div>
+    </div>
+    <div
+      class="flex flex-col justify-center xl:flex-row xl:mr-32 items-center xl:items-start mt-8 lg:mt-0 xl:self-start mb-8"
+    >
+      <div class="flex mb-12 xl:mr-12 2xl:mr-24">
+        <FormAbonnementFooter />
+      </div>
+      <div class="flex flex-col">
+        <img
+          src="/img/logo_lbke.png"
+          width="80px"
+          height="80px"
+          class="self-center 2xl:self-end"
+        />
+        <div class="mt-2 text-center 2xl:text-right">
+          <a href="https://www.lbke.fr/" target="_blank" class="text-xs mb-4"
+            >www.lbke.fr</a
+          >
+          <section
+            class="flex flex-row flex-wrap justify-center md:justify-end gap-x-3 mb-4 px-4 mt-1 md:px-0 md:text-xl"
+          >
+            <a href="https://linkedin.com/company/lbke" target="_blank"
+              ><Icon name="hugeicons:linkedin-02" size={24} /></a
+            >
+            <a href="https://github.com/lbke" target="_blank"
+              ><Icon name="hugeicons:github-01" size={24} /></a
+            >
+            <a href="https://x.com/LBKE_FR" target="_blank"
+              ><Icon name="hugeicons:new-twitter" size={24} /></a
+            >
+          </section>
+          <div>
+            <p class="md:text-xs">contact@lbke.fr</p>
+            <p class="md:text-xs mb-4">
+              <span class="whitespace-nowrap">(+33)6 89 97 95 70</span>
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="self-center mb-2">
+    <a href="/mentions-legales" target="_blank" class="mr-5 text-xs"
+      >Mentions légales [FR]</a
+    >
+    <a href="/legal-notices" target="_blank" class="text-xs"
+      >Legal notice [EN]</a
+    >
+  </div>
+</footer>

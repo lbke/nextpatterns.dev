@@ -1,0 +1,20 @@
+# Default SEO metadata
+metadata:
+  title:
+    default: NextPatterns
+    template: "%s"
+  description: "An interactive Next.js course"
+  robots:
+    index: true
+    follow: true
+  openGraph:
+    site_name: NextPatterns
+    images:
+      - url: "~/assets/images/default.png"
+        width: 1200
+        height: 628
+    type: website
+  twitter:
+    handle: "@onwidget"
+    site: "@onwidget"
+    cardType: summary_large_image

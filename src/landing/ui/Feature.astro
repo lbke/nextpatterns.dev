@@ -1,0 +1,39 @@
+---
+const { class: className, disabled } = Astro.props;
+export interface Props {
+  /**
+   * Class will be APPENDED to default classes and not replace them
+   * contrary to some other components
+   */
+  class?: string;
+  /** Do not animate on hover (no link) */
+  disabled?: boolean;
+}
+---
+
+<div
+  class={"feature \
+  p-2 sm:p-8 \
+  flex flex-col \
+  mx-auto max-w-[300px] sm:max-h-[200px] sm:max-w-44 md:max-h-[250px] md:w-48 \
+  sm:mx-auto \
+  bg-white border border-white dark:bg-black shadow-lg rounded-xl \
+  " +
+    " " +
+    className +
+    " " +
+    (disabled ? "" : "hover:scale-105 motion-safe:transition-transform")}
+>
+  <div
+    class="content flex flex-row-reverse sm:flex-col gap-12 sm:gap-5 justify-end sm:justify-between items-center h-full"
+    title={disabled ? "Soon..." : undefined}
+  >
+    <slot>Missing feature</slot>
+  </div>
+</div>
+
+<style>
+  .feature {
+    position: relative;
+  }
+</style>
