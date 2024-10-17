@@ -21,7 +21,10 @@ export default defineConfig({
 
   integrations: [
     tutorialkit({
-      defaultRoutes: "tutorial-only", // homepage is on "/"
+      // defaultRoutes: "tutorial-only", // homepage is on "/"
+      // in vercel.json:
+      // "source": "/",
+      // "destination": "https://discover.nextpatterns.dev"
     }),
     sitemap(),
   ],
