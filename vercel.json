@@ -14,7 +14,7 @@
       ]
     }
   ],
-  "rewrites": [
+  "redirects": [
     {
       "source": "/",
       "destination": "https://discover.nextpatterns.dev"
