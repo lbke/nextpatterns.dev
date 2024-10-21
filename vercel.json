@@ -13,5 +13,12 @@
         }
       ]
     }
+  ],
+  // in vercel.json:
+  "redirects": [
+    {
+      "source": "/",
+      "destination": "https://discover.nextpatterns.dev"
+    }
   ]
 }

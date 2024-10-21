@@ -11,7 +11,7 @@ const redirects = import.meta.env.PROD
       // In prod, "/" is the landing page, in dev we redirect to first pattern
       "/": {
         destination: "/p/get-started/welcome",
-        status: 301 as const,
+        status: 302 as const,
       } as const,
     };
 export default defineConfig({
@@ -21,10 +21,7 @@ export default defineConfig({
 
   integrations: [
     tutorialkit({
-      // defaultRoutes: "tutorial-only", // homepage is on "/"
-      // in vercel.json:
-      // "source": "/",
-      // "destination": "https://discover.nextpatterns.dev"
+      defaultRoutes: "tutorial-only", // homepage is on "/"
     }),
     sitemap(),
   ],
