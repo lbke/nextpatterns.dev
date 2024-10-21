@@ -14,7 +14,6 @@
       ]
     }
   ],
-  // in vercel.json:
   "redirects": [
     {
       "source": "/",
