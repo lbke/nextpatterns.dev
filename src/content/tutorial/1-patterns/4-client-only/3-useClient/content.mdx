@@ -1,0 +1,97 @@
+---
+type: lesson
+title: 4 ways of implementing a useClient hook
+focus: /app/hooks.ts
+slug: use-clientèhook
+# @see https://github.com/stackblitz/tutorialkit/issues/327
+# rss: true
+# publishedAt: 2024-09-10
+---
+
+There are 2 main types of components in React:
+
+- Server components
+- Client components
+
+Server component render only server-side,
+they are great for fetching data and rendering non-interactive HTML content,
+like a blog post.
+
+Client components are used to implement interactive features,
+like opening a menu after clicking on a button.
+
+They use React hooks to manage this interactivity.
+Client components can also run JavaScript in your browser
+and access the `window` object.
+
+However the fact that Client components are also pre-rendered on the server,
+before rendering again in the browser for interactivity,
+is a common source of confusion in React.
+
+Advanced React developers are already aware of how they can implement a `useClient` hook 
+to avoid these issues. But I am pretty sure they can't quote 4 different ways of doing so!
+
+**Let's discover various implementations of a `useClient` hook
+to properly run client-only code.**
+
+## Using the window object: the wrong way
+
+Say you want to use the `window` object,
+which only exists in the browser, 
+to detect if the user's Internet connection is fine.
+
+With a naive approach, 
+you may run into some unexpected errors.
+
+```tsx
+"use client"
+export function IsOnline() {
+    // Won't work during server pre-render
+    // ❌ will throw
+    return window.isOnline;
+}
+```
+
+:::tip
+Use the "toggle terminal" button to see the server-side errors: <div class="inline-block i-ph-terminal-window-duotone" />
+:::
+
+This won't work either:
+```tsx
+"use client"
+export function IsOnline() {
+    // Won't work during first client render (hydration)
+    if (typeof window !== "undefined") return null
+    // ❌ will throw
+    return window.isOnline;
+}
+```
+
+
+Technically, the first hydration render happens on the client, 
+but you cannot call client-only JavaScript yet,
+because this render has to be consistent with the server.
+
+## Detecting when we can run client code
+
+
+
+:::tip
+React strict mode will render components twice in development,
+to catch some errors.
+I've disabled it to make the logs more readable.
+:::
+
+## References
+
+[Lifecycle of Reactive Effects](https://react.dev/learn/lifecycle-of-reactive-effects)
+
+[How to Get Rid of “Window is Not Defined” and Hydration Mismatch Errors in Next.js - Eric Burel](https://medium.com/@eric.burel/how-to-get-rid-of-window-is-not-defined-and-hydration-mismatch-errors-in-next-js-567cc51b4a17)
+
+[[FR] Éliminez les erreurs "Window is Not Defined" et "Hydration Mismatch" dans Next.js](https://www.formationnextjs.fr/ressources/hydration-error-window-not-defined-react-next)
+
+A variation of the NoSsr component using an empty synchronous external store, by Dominik (TkDodo). The potential advantage over “useEffect” is that it could “defer rendering when doing a client side transition”: https://twitter.com/TkDodo/status/1741068994981826947
+
+[Headless UI implementation of useIsMounted](https://github.com/tailwindlabs/headlessui/blob/5eb3b12a95a980397d4cf055f120691911631e85/packages/%40headlessui-react/src/hooks/use-is-mounted.ts)
+
+[SkipRenderOnClient](https://gist.github.com/OliverJAsh/e9a588e7e907101affe1a7696a25b1fd#file-skiprenderonclient-tsx-L15)
